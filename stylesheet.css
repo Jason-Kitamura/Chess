@@ -1,0 +1,25 @@
+#gameBoard {
+    display: block;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 75px;
+    height: 406px;
+    width: 406px;
+    background-color: whitesmoke;
+    border: solid rgb(51, 148, 51) ;
+}
+body {
+    background-color: wheat;
+}
+.gameCell {
+    border: solid rgb(0, 0, 0) thin;
+    height: 50px;
+    width: 50px;
+}
+.grey {
+    background-color: grey;
+}
+.piece {
+    width: 100%;
+    height: auto;
+}
