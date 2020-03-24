@@ -10,7 +10,8 @@ let main = {
           img: './assets/WhiteKing.png',
           captured: false,
           moved: false,
-          type: 'w_king'
+          type: 'w_king',
+          piece: 'w_king'
           
         },
         w_queen: {
@@ -18,105 +19,120 @@ let main = {
           img: './assets/WhiteQueen.png',
           captured: false,
           moved: false,
-          type: 'w_queen'
+          type: 'w_queen',
+          piece: 'w_queen'
         },
         w_bishop1: {
           position: '3_1',
           img: './assets/WhiteBishop.png',
           captured: false,
           moved: false,
-          type: 'w_bishop'
+          type: 'w_bishop',
+          piece: 'w_bishop1'
         },
         w_bishop2: {
           position: '6_1',
           img: './assets/WhiteBishop.png',
           captured: false,
           moved: false,
-          type: 'w_bishop'
+          type: 'w_bishop',
+          piece: 'w_bishop2'
         },
         w_knight1: {
           position: '2_1',
           img: './assets/WhiteKnight.png',
           captured: false,
           moved: false,
-          type: 'w_knight'
+          type: 'w_knight',
+          piece: 'w_knight1'
         },
         w_knight2: {
           position: '7_1',
           img: './assets/WhiteKnight.png',
           captured: false,
           moved: false,
-          type: 'w_knight'
+          type: 'w_knight',
+          piece: 'w_knight2'
         },
         w_rook1: {
           position: '1_1',
           img: './assets/WhiteRook.png',
           captured: false,
           moved: false,
-          type: 'w_rook'
+          type: 'w_rook',
+          piece: 'w_rook1'
         },
         w_rook2: {
           position: '8_1',
           img: './assets/WhiteRook.png',
           captured: false,
           moved: false,
-          type: 'w_rook'
+          type: 'w_rook',
+          piece: 'w_rook2'
         },
         w_pawn1: {
           position: '1_2',
           img: './assets/WhitePawn.png',
           captured: false,
           type: 'w_pawn',
-          moved: false
+          moved: false,
+          piece: 'w_pawn1',
         },
         w_pawn2: {
           position: '2_2',
           img: './assets/WhitePawn.png',
           captured: false,
           type: 'w_pawn',
-          moved: false
+          moved: false,
+          piece: 'w_pawn2',
         },
         w_pawn3: {
           position: '3_2',
           img: './assets/WhitePawn.png',
           captured: false,
           type: 'w_pawn',
-          moved: false
+          moved: false,
+          piece: 'w_pawn3',
         },
         w_pawn4: {
           position: '4_2',
           img: './assets/WhitePawn.png',
           captured: false,
           type: 'w_pawn',
-          moved: false
+          moved: false,
+          piece: 'w_pawn4',
         },
         w_pawn5: {
           position: '5_2',
           img: './assets/WhitePawn.png',
           captured: false,
           type: 'w_pawn',
-          moved: false
+          moved: false,
+          piece: 'w_pawn5',
         },
         w_pawn6: {
           position: '6_2',
           img: './assets/WhitePawn.png',
           captured: false,
           type: 'w_pawn',
-          moved: false
+          moved: false,
+          piece: 'w_pawn6',
         },
         w_pawn7: {
           position: '7_2',
           img: './assets/WhitePawn.png',
           captured: false,
           type: 'w_pawn',
-          moved: false
+          moved: false,
+          piece: 'w_pawn7',
         },
         w_pawn8: {
           position: '8_2',
           img: './assets/WhitePawn.png',
           captured: false,
           type: 'w_pawn',
-          moved: false
+          moved: false,
+          piece: 'w_pawn8',
         },
   //black pieces
         b_king: {
@@ -124,112 +140,129 @@ let main = {
           img: './assets/BlackKing.png',
           captured: false,
           moved: false,
-          type: 'b_king'
+          type: 'b_king',
+          piece: 'b_king',
         },
         b_queen: {
           position: '4_8',
           img: './assets/BlackQueen.png',
           captured: false,
           moved: false,
-          type: 'b_queen'
+          type: 'b_queen',
+          piece: 'b_queen',
         },
         b_bishop1: {
           position: '3_8',
           img: './assets/BlackBishop.png',
           captured: false,
           moved: false,
-          type: 'b_bishop'
+          type: 'b_bishop',
+          piece: 'b_bishop1',
         },
         b_bishop2: {
           position: '6_8',
           img: './assets/BlackBishop.png',
           captured: false,
           moved: false,
-          type: 'b_bishop'
+          type: 'b_bishop',
+          piece: 'b_bishop2',
         },
         b_knight1: {
           position: '2_8',
           img: './assets/BlackKnight.png',
           captured: false,
           moved: false,
-          type: 'b_knight'
+          type: 'b_knight',
+          piece: 'b_knight1',
         },
         b_knight2: {
           position: '7_8',
           img: './assets/BlackKnight.png',
           captured: false,
           moved: false,
-          type: 'b_knight'
+          type: 'b_knight',
+          piece: 'b_knight2',
         },
         b_rook1: {
           position: '1_8',
           img: './assets/BlackRook.png',
           captured: false,
           moved: false,
-          type: 'b_rook'
+          type: 'b_rook',
+          piece: 'b_rook1',
         },
         b_rook2: {
           position: '8_8',
           img: './assets/BlackRook.png',
           captured: false,
           moved: false,
-          type: 'b_rook'
+          type: 'b_rook',
+          piece: 'b_rook2',
         },
         b_pawn1: {
           position: '1_7',
           img: './assets/BlackPawn.png',
           captured: false,
           type: 'b_pawn',
-          moved: false
+          moved: false,
+          piece: 'b_pawn1',
         },
         b_pawn2: {
           position: '2_7',
           img: './assets/BlackPawn.png',
           captured: false,
           type: 'b_pawn',
-          moved: false
+          moved: false,
+          piece: 'b_pawn2',
         },
         b_pawn3: {
           position: '3_7',
           img: './assets/BlackPawn.png',
           captured: false,
           type: 'b_pawn',
-          moved: false
+          moved: false,
+          piece: 'b_pawn3',
+          
         },
         b_pawn4: {
           position: '4_7',
           img: './assets/BlackPawn.png',
           captured: false,
           type: 'b_pawn',
-          moved: false
+          moved: false,
+          piece: 'b_pawn4',
         },
         b_pawn5: {
           position: '5_7',
           img: './assets/BlackPawn.png',
           captured: false,
           type: 'b_pawn',
-          moved: false
+          moved: false,
+          piece: 'b_pawn5',
         },
         b_pawn6: {
           position: '6_7',
           img: './assets/BlackPawn.png',
           captured: false,
           type: 'b_pawn',
-          moved: false
+          moved: false,
+          piece: 'b_pawn6',
         },
         b_pawn7: {
           position: '7_7',
           img: './assets/BlackPawn.png',
           captured: false,
           type: 'b_pawn',
-          moved: false
+          moved: false,
+          piece: 'b_pawn7',
         },
         b_pawn8: {
           position: '8_7',
           img: './assets/BlackPawn.png',
           captured: false,
           type: 'b_pawn',
-          moved: false
+          moved: false,
+          piece: 'b_pawn8',
         }
       },
     cells: {
@@ -546,14 +579,14 @@ function appendPeices( main ){
   })
 };
 
-function showMoves( piece, square ) {
+function showMoves( type, piece, square ) {
   console.log('showing moves for: ', piece, square);
 
   const row = Number(square.charAt(0))
   const col = Number(square.charAt(2));
   console.log(`column: ${col}, row: ${row}`)
 
-  if ( piece === 'w_pawn' ){
+  if ( type === 'w_pawn' ){
     $(`#${square}`).attr( 'style', 'border: green thick solid;');
  
     const possibleMoves = [ `${row}_${col+1}`, `${row}_${col+2}`];
@@ -562,6 +595,7 @@ function showMoves( piece, square ) {
     moveObj = {
       oldCell: square,
       possibleMoves: possibleMoves,
+      type: type,
       piece: piece
     }
 
@@ -569,13 +603,13 @@ function showMoves( piece, square ) {
       
       console.log( 'obj', moveObj );
       $(`#${move}`).attr('style', 'border: solid blue thick');
-      $(`#${move}`).attr('onclick', `movePiece( ${move} )`);
+      $(`#${move}`).attr('onclick', `movePiece( ${move}, ${square} )`);
 
     })
   }
 }
 
-function movePiece( move ){
+function movePiece( move, cellOld){
   // const StringOld = String(cell);
   // const rowOld = Number(StringOld.charAt(0))
   // const colOld = Number(StringOld.charAt(1));
@@ -590,9 +624,10 @@ const newCell = `${row}_${col}`;
 
   const oldCell = moveObj.oldCell;
   const possibleMoves = moveObj.possibleMoves;
+  const type = moveObj.type
   const piece = moveObj.piece
 
-  console.log( oldCell, newCell, possibleMoves, piece );
+  // console.log( oldCell, newCell, possibleMoves, type, piece );
 
 //removing css
   $(`#${oldCell}`).removeAttr('style', 'border: green thick solid;');
@@ -601,6 +636,26 @@ const newCell = `${row}_${col}`;
   possibleMoves.forEach( function( cell){
     $(`#${cell}`).removeAttr('style', 'border: blue thick solid;');
     $(`#${cell}`).removeAttr('onclick');
+
+    if( piece.charAt(0) === 'w'){
+      main.variables.cells[move].occupied.white = true;
+      main.variables.cells[cellOld].occupied.white = false
+      main.variables.cells[cellOld].occupied.status = false
+
+
+    } else {
+      main.variables.cells[move].occupied.black = true
+      main.variables.cells[cellOld].occupied.black = false
+      main.variables.cells[cellOld].occupied.status = false
+    }
+
+    main.variables.cells[move].occupied.status = true
+    main.variables.cells[move].piece = piece
+
+    // console.log(main.variables.cells[move]);
+    // console.log(main.variables.cells[cellOld])
+
+    //need to add pawn location
    
   })
   obj = ''
@@ -626,10 +681,12 @@ $('#gameBoard').on('click', function(){
         return piece.position == square;
       } );
 
-      const pieceInfo = selectedPiece[0].type;
-      console.log( `selected: ${pieceInfo}, at: ${square}` );
 
-      showMoves( pieceInfo, square );
+      const pieceType = selectedPiece[0].type;
+      const piece = selectedPiece[0].piece;
+      console.log( `selected: ${pieceType}, at: ${square}` );
+
+      showMoves( pieceType, piece, square );
     }
 })
 
