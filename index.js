@@ -509,6 +509,7 @@ let main = {
     }
   }
 
+let moveObj;
 
 $(document).ready(function(){
     console.log('document ready')
@@ -558,42 +559,58 @@ function showMoves( piece, square ) {
     const possibleMoves = [ `${row}_${col+1}`, `${row}_${col+2}`];
     console.log(`new col: ${col+1}, possible moves: ${possibleMoves}`)
 
-    const obj = {
-
+    moveObj = {
+      oldCell: square,
+      possibleMoves: possibleMoves,
+      piece: piece
     }
 
     possibleMoves.forEach( function( move ){
-      const obj = {
-        newCell: move,
-        oldCell: square,
-        possibleMoves: possibleMoves,
-        piece: piece
-      }
-      console.log( 'obj', obj );
+      
+      console.log( 'obj', moveObj );
       $(`#${move}`).attr('style', 'border: solid blue thick');
-      $(`#${move}`).attr('onclick', `movePiece( ${obj} )`);
+      $(`#${move}`).attr('onclick', `movePiece( ${move} )`);
 
     })
   }
 }
 
-function movePiece( obj){
+function movePiece( move ){
   // const StringOld = String(cell);
   // const rowOld = Number(StringOld.charAt(0))
   // const colOld = Number(StringOld.charAt(1));
   // const oldCell = `${rowOld}_${colOld}`;
+// console.log('move object', moveObj );
+const moveString = String(move);
+const row = Number(moveString.charAt(0))
+const col = Number(moveString.charAt(1));
+const newCell = `${row}_${col}`;
+// console.log(`moved from ${oldCell} to ${newCell}`);
 
 
-  // const moveString = String(move);
-  // const row = Number(moveString.charAt(0))
-  // const col = Number(moveString.charAt(1));
-  // const newCell = `${row}_${col}`;
-  // console.log(`moved from ${oldCell} to ${newCell}`);
+  const oldCell = moveObj.oldCell;
+  const possibleMoves = moveObj.possibleMoves;
+  const piece = moveObj.piece
+
+  console.log( oldCell, newCell, possibleMoves, piece );
+
+//removing css
+  $(`#${oldCell}`).removeAttr('style', 'border: green thick solid;');
+  $(`#${oldCell}`).empty();
+  $(`#${newCell}`).append(`<img src="./assets/WhitePawn.png" class="piece">`);
+  possibleMoves.forEach( function( cell){
+    $(`#${cell}`).removeAttr('style', 'border: blue thick solid;');
+    $(`#${cell}`).removeAttr('onclick');
+   
+  })
+  obj = ''
+  
+
 
   // $(`#${oldCell}`).empty();
   // $(`#${newCell}`).append(`<img src="./assets/WhitePawn.png" class="piece">`);
 
-console.log( obj );  
+
 
 }
 
