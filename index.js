@@ -579,24 +579,45 @@ function appendPeices( main ){
   })
 };
 
-function showMoves( type, piece, square ) {
+function showMoves( type, piece, square, moved ) {
   console.log('showing moves for: ', piece, square);
 
   const row = Number(square.charAt(0))
   const col = Number(square.charAt(2));
   console.log(`column: ${col}, row: ${row}`)
 
+  let possibleMoves;
+
   if ( type === 'w_pawn' ){
     $(`#${square}`).attr( 'style', 'border: green thick solid;');
- 
-    const possibleMoves = [ `${row}_${col+1}`, `${row}_${col+2}`];
-    console.log(`new col: ${col+1}, possible moves: ${possibleMoves}`)
 
+    console.log( 'move status:', moved );
+    if( moved === false ){
+      possibleMoves = [ `${row}_${col+1}`, `${row}_${col+2}`];
+      console.log(`new col: ${col+1}, possible moves: ${possibleMoves}`)
+    } else {
+      possibleMoves = [ `${row}_${col+1}`,];
+      console.log(`new col: ${col+1}, possible moves: ${possibleMoves}`)
+    }
+  }
+    if ( type === 'b_pawn' ){
+      $(`#${square}`).attr( 'style', 'border: green thick solid;');
+
+      console.log( 'move status:', moved );
+      if( moved === false ){
+        possibleMoves = [ `${row}_${col-1}`, `${row}_${col-2}`];
+        console.log(`new col: ${col-1}, possible moves: ${possibleMoves}`)
+      } else {
+        possibleMoves = [ `${row}_${col-1}`,];
+        console.log(`new col: ${col-1}, possible moves: ${possibleMoves}`)
+      }
+    }
+  
     moveObj = {
       oldCell: square,
       possibleMoves: possibleMoves,
       type: type,
-      piece: piece
+      piece: piece,
     }
 
     possibleMoves.forEach( function( move ){
@@ -606,33 +627,38 @@ function showMoves( type, piece, square ) {
       $(`#${move}`).attr('onclick', `movePiece( ${move}, ${square} )`);
 
     })
-  }
+
+
+
+
 }
 
 function movePiece( move, cellOld){
-  // const StringOld = String(cell);
-  // const rowOld = Number(StringOld.charAt(0))
-  // const colOld = Number(StringOld.charAt(1));
-  // const oldCell = `${rowOld}_${colOld}`;
-// console.log('move object', moveObj );
+
 const moveString = String(move);
 const row = Number(moveString.charAt(0))
 const col = Number(moveString.charAt(1));
 const newCell = `${row}_${col}`;
-// console.log(`moved from ${oldCell} to ${newCell}`);
+
 
 
   const oldCell = moveObj.oldCell;
   const possibleMoves = moveObj.possibleMoves;
-  const type = moveObj.type
-  const piece = moveObj.piece
+  const type = moveObj.type;
+  const piece = moveObj.piece;
 
-  // console.log( oldCell, newCell, possibleMoves, type, piece );
 
 //removing css
   $(`#${oldCell}`).removeAttr('style', 'border: green thick solid;');
   $(`#${oldCell}`).empty();
-  $(`#${newCell}`).append(`<img src="./assets/WhitePawn.png" class="piece">`);
+  //adding new image
+  if( type === 'w_pawn'){
+    $(`#${newCell}`).append(`<img src="./assets/WhitePawn.png" class="piece">`);
+  } else if( type === 'b_pawn'){
+    $(`#${newCell}`).append(`<img src="./assets/BlackPawn.png" class="piece">`);
+  }
+
+
   possibleMoves.forEach( function( cell){
     $(`#${cell}`).removeAttr('style', 'border: blue thick solid;');
     $(`#${cell}`).removeAttr('onclick');
@@ -652,43 +678,35 @@ const newCell = `${row}_${col}`;
     main.variables.cells[move].occupied.status = true
     main.variables.cells[move].piece = piece
 
-    // console.log(main.variables.cells[move]);
-    // console.log(main.variables.cells[cellOld])
-
-    //need to add pawn location
-   
+    main.variables.pieces[piece].position = newCell;
+    main.variables.pieces[piece].moved = true;
   })
   obj = ''
-  
-
-
-  // $(`#${oldCell}`).empty();
-  // $(`#${newCell}`).append(`<img src="./assets/WhitePawn.png" class="piece">`);
-
-
-
 }
 
 $('#gameBoard').on('click', function(){
 
     const square = event.target.parentElement.id
+    console.log('square:', square );
         
     if( square ){
 
       const allPeices = Object.values( main.variables.pieces );
+      console.log('all Pieces:', allPeices );
         
       const selectedPiece = allPeices.filter( function( piece ){
         return piece.position == square;
       } );
-
+      console.log('selected piece', selectedPiece );
 
       const pieceType = selectedPiece[0].type;
-      const piece = selectedPiece[0].piece;
+      const piece = selectedPiece[0].piece
+      const moved = selectedPiece[0].moved
       console.log( `selected: ${pieceType}, at: ${square}` );
 
-      showMoves( pieceType, piece, square );
+      showMoves( pieceType, piece, square, moved );
     }
-})
+});
 
 // function showMoves( peice, square ){
 
