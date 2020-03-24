@@ -587,16 +587,24 @@ function showMoves( type, piece, square, moved ) {
   console.log(`column: ${col}, row: ${row}`)
 
   let possibleMoves;
+  let checkingMoves;
+  let allies = [];
+  let enemies = [];
+  let openCell = [];
 
   if ( type === 'w_pawn' ){
     $(`#${square}`).attr( 'style', 'border: green thick solid;');
 
     console.log( 'move status:', moved );
     if( moved === false ){
-      possibleMoves = [ `${row}_${col+1}`, `${row}_${col+2}`];
+      possibleMoves = [ `${row}_${col+1}`, `${row+1}_${col+1}`, `${row-1}_${col+1}`, `${row}_${col+2}` ];
+      checkingMoves = [ Number(`${row}${col+1}`), Number(`${row+1}${col+1}`), Number(`${row-1}${col+1}`), Number(`${row}${col+2}`) ];
+
       console.log(`new col: ${col+1}, possible moves: ${possibleMoves}`)
     } else {
-      possibleMoves = [ `${row}_${col+1}`,];
+      possibleMoves = [ `${row}_${col+1}`, `${row+1}_${col+1}`, `${row-1}_${col+1}`];
+      checkingMoves = [ Number(`${row}${col+1}`), Number(`${row+1}${col+1}`), Number(`${row-1}${col+1}`)];
+
       console.log(`new col: ${col+1}, possible moves: ${possibleMoves}`)
     }
   }
@@ -612,6 +620,24 @@ function showMoves( type, piece, square, moved ) {
         console.log(`new col: ${col-1}, possible moves: ${possibleMoves}`)
       }
     }
+    checkingMoves.forEach( function( move ){
+      const string = String( move );
+      const stringMove = `${string.charAt(0)}_${string.charAt(1)}`
+      console.log('string move:', stringMove);
+      console.log('test:', main.variables.cells[ move])
+
+      const ally = main.variables.cells[move].occupied.white
+      const enemy = main.variables.cells[move].occupied.black
+
+      if( ally === true){
+        allies.push( stringMove );
+      }else if ( enemy === true ){
+        enemies.push( stringMove );
+      }else {
+        openCell.push( stringMove );
+      }
+
+    });
   
     moveObj = {
       oldCell: square,
@@ -620,10 +646,17 @@ function showMoves( type, piece, square, moved ) {
       piece: piece,
     }
 
-    possibleMoves.forEach( function( move ){
+    openCell.forEach( function( move ){
       
       console.log( 'obj', moveObj );
       $(`#${move}`).attr('style', 'border: solid blue thick');
+      $(`#${move}`).attr('onclick', `movePiece( ${move}, ${square} )`);
+
+    });
+    enemies.forEach( function( move ){
+      
+      console.log( 'obj', moveObj );
+      $(`#${move}`).attr('style', 'border: solid red thick');
       $(`#${move}`).attr('onclick', `movePiece( ${move}, ${square} )`);
 
     })
@@ -635,10 +668,10 @@ function showMoves( type, piece, square, moved ) {
 
 function movePiece( move, cellOld){
 
-const moveString = String(move);
-const row = Number(moveString.charAt(0))
-const col = Number(moveString.charAt(1));
-const newCell = `${row}_${col}`;
+  const moveString = String(move);
+  const row = Number(moveString.charAt(0))
+  const col = Number(moveString.charAt(1));
+  const newCell = `${row}_${col}`;
 
 
 
