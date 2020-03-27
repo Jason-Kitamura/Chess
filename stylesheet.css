@@ -1,8 +1,6 @@
 #gameBoard {
     display: block;
     margin: auto;
-    margin-top: 100px;
-    margin-bottom: 75px;
     height: 406px;
     width: 406px;
     background-color: whitesmoke;
@@ -22,4 +20,20 @@ body {
 .piece {
     width: 100%;
     height: auto;
+}
+.grave {
+    height: 30px;
+    width: 30px;
+}
+#whiteGrave {
+    margin-top: 100px;
+    width: 245;
+}
+.graveRow {
+    margin: auto;
+    height: 34px;
+
+}
+.container {
+    width: 450px;
 }
