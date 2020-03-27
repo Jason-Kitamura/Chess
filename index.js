@@ -615,33 +615,6 @@ $('#gameBoard').on('click', function(){
   }
 });
 
-//     if( pieceType === 'w_pawn'){
-//       showWhitePawn( pieceType, piece, cell, moved );
-//     } else if( pieceType === 'b_pawn'){
-//       showBlackPawn( pieceType, piece, cell, moved );
-//     }  else if (pieceType === 'w_knight') {
-//       showWhiteKnight( pieceType, piece, cell );
-//     } else if (pieceType === 'b_knight') {
-//       showBlackKnight( pieceType, piece, cell );
-//     } else if (pieceType === 'w_bishop') {
-//       showWhiteBishop( pieceType, piece, cell );
-//     } else if (pieceType === 'b_bishop') {
-//       showBlackBishop( pieceType, piece, cell );
-//     } else if (pieceType === 'w_rook') {
-//       showWhiteRook( pieceType, piece, cell );
-//     } else if (pieceType === 'b_rook') {
-//       showBlackRook( pieceType, piece, cell );
-//     } else if (pieceType === 'w_queen') {
-//       showWhiteQueen( pieceType, piece, cell );
-//     } else if (pieceType === 'b_queen') {
-//       showBlackQueen( pieceType, piece, cell );
-//     } else if (pieceType === 'w_king') {
-//       showWhiteKing( pieceType, piece, cell );
-//     } else if (pieceType === 'b_king') {
-//       showBlackKing( pieceType, piece, cell );
-//     }
-//   }
-
 
 function showWhitePawn( type, piece, cell, moved ){
   console.log('showing moves for WhitePawn: ', piece, cell);
@@ -2342,16 +2315,25 @@ function capturePiece( newCell, oldCell ){
   if ( capturedType.charAt(0) === 'w'){
     if( capturedType === 'w_pawn'){
         $('#whitePawnGrave').append(` <div class='grave' id="${capturedType}"><img src='${capturedImg}' class='piece'></div>`)
+    } else if ( capturedType === 'w_king' ){
+      console.log('black wins')
+      toastr.success('Black Wins !')
     } else {
       $('#whiteRoyalGrave').append(` <div class='grave' id="${capturedType}"><img src='${capturedImg}' class='piece'></div>`)
     }
   } else {
-    if ( capturedType === 'b_pawn'){
+    if ( capturedType === 'b_king'){
+      console.log('white wins')
+      toastr.success('White Wins !')
+    } else if ( capturedType === 'b_pawn'){
       $('#blackPawnGrave').append(` <div class='grave' id="${capturedType}"><img src='${capturedImg}' class='piece'></div>`)
     }else {
       $('#blackRoyalGrave').append(` <div class='grave' id="${capturedType}"><img src='${capturedImg}' class='piece'></div>`)
     }
+
   }
+
+
 
   console.log('piece:', moveObj.piece)
 
